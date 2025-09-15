@@ -1,0 +1,10 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h2>Welcome, @ViewBag.UserName!</h2>
+
+@if (!string.IsNullOrEmpty(ViewBag.UserEmail))
+{
+    <p>Email: @ViewBag.UserEmail</p>
+}
