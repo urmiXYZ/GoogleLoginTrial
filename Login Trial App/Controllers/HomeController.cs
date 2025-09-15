@@ -1,7 +1,6 @@
 using System.Diagnostics;
-using System.Security.Claims;
-using Login_Trial_App.Models;
 using Microsoft.AspNetCore.Mvc;
+using Login_Trial_App.Models;
 
 namespace Login_Trial_App.Controllers
 {
@@ -15,17 +14,6 @@ namespace Login_Trial_App.Controllers
 
         public IActionResult Index()
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                ViewBag.UserName = User.Identity.Name;
-                ViewBag.UserEmail = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
-            }
-            else
-            {
-                ViewBag.UserName = "Guest";
-                ViewBag.UserEmail = "";
-            }
-
             return View();
         }
 

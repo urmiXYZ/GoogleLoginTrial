@@ -2,9 +2,11 @@
     ViewData["Title"] = "Home Page";
 }
 
-<h2>Welcome, @ViewBag.UserName!</h2>
+<h2>
+    Welcome, @(User.Identity.IsAuthenticated ? User.Identity.Name : "Guest")!
+</h2>
 
-@if (!string.IsNullOrEmpty(ViewBag.UserEmail))
+@if (User.Identity.IsAuthenticated)
 {
-    <p>Email: @ViewBag.UserEmail</p>
+    <p>Email: @User.Claims.FirstOrDefault(c => c.Type == System.Security.Claims.ClaimTypes.Email)?.Value</p>
 }
